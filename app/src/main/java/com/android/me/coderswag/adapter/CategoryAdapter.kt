@@ -9,12 +9,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.android.me.coderswag.R
 import com.android.me.coderswag.model.Category
+import com.android.me.coderswag.util.DRAWABLE
 import kotlinx.android.synthetic.main.category_list_item.view.*
 
-class CategoryAdapter(context: Context, categories: List<Category>) : BaseAdapter() {
-
-    val context = context
-    val categories = categories
+class CategoryAdapter(private val context: Context, private val categories: List<Category>) : BaseAdapter() {
 
     // called every time view is created, list is scrolled
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -34,7 +32,7 @@ class CategoryAdapter(context: Context, categories: List<Category>) : BaseAdapte
         }
         val category = categories[position]
         holder.categoryName?.text = category.title
-        val resourceId = context.resources.getIdentifier(category.image, "drawable", context.packageName)
+        val resourceId = context.resources.getIdentifier(category.image, DRAWABLE, context.packageName)
         holder.categoryImage?.setImageResource(resourceId)
         return categoryView
     }
